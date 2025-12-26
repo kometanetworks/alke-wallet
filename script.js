@@ -404,7 +404,10 @@ $(document).ready(function () {
       localStorage.setItem("contactos", JSON.stringify(contactos));
 
       mostrarAlerta("¡Contacto agregado con éxito!", "success");
-      renderizarContactos();
+      
+      // Limpiar buscador y renderizar todos los contactos
+      $("#buscador").val("");
+      renderizarContactos("");
 
       // Limpiar y cerrar modal
       $("#nombreContacto, #cbuContacto, #aliasContacto, #bancoContacto").val("");
