@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alke Wallet - Enviar Dinero</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- jQuery UI CSS para Autocomplete -->
+  <link href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" rel="stylesheet">
+  <!-- Estilos personalizados -->
+  <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- NAVBAR RESPONSIVE -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="menu.html">
+      <i class="bi bi-wallet2"></i> Alke Wallet
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="menu.html">
+            <i class="bi bi-house"></i> Inicio
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="deposit.html">
+            <i class="bi bi-plus-circle"></i> Depositar
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="sendmoney.html">
+            <i class="bi bi-send"></i> Enviar
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="transactions.html">
+            <i class="bi bi-clock-history"></i> Movimientos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="bi bi-box-arrow-right"></i> Salir
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTENEDOR PRINCIPAL -->
+<div class="main-container">
+
+  <h2><i class="bi bi-send"></i> Enviar Dinero</h2>
+
+  <!-- SALDO ACTUAL -->
+  <div class="saldo-display">
+    <p><i class="bi bi-wallet"></i> Saldo disponible</p>
+    <h4 id="saldoDisponible">$0</h4>
+  </div>
+
+  <!-- BUSCADOR CON AUTOCOMPLETE -->
+  <div class="mb-3 text-start">
+    <label for="buscador" class="form-label">
+      <i class="bi bi-search"></i> Buscar contacto
+    </label>
+    <input 
+      type="text" 
+      id="buscador" 
+      class="form-control" 
+      placeholder="Escribe nombre o alias..."
+      autocomplete="off"
+    >
+  </div>
+
+  <!-- BOTÓN AGREGAR CONTACTO -->
+  <button type="button" id="btnAgregarContacto" class="btn btn-success w-100 btn-menu mb-3">
+    <i class="bi bi-person-plus-fill"></i> Agregar Nuevo Contacto
+  </button>
+
+  <!-- LISTA DE CONTACTOS -->
+  <h5 class="mb-2 text-start"><i class="bi bi-people"></i> Contactos</h5>
+  <ul id="listaContactos" class="list-group mb-3"></ul>
+
+  <!-- BOTÓN ENVIAR DINERO (oculto hasta seleccionar contacto) -->
+  <button type="button" id="btnEnviarDinero" class="btn btn-warning w-100 btn-menu mb-3" style="display: none;">
+    <i class="bi bi-cash-stack"></i> Enviar Dinero
+  </button>
+
+  <!-- ALERTA -->
+  <div id="alert-container" class="alert d-none" role="alert"></div>
+
+  <a href="menu.html" class="btn btn-primary w-100 btn-menu">
+    <i class="bi bi-arrow-left"></i> Volver al Menú
+  </a>
+
+</div>
+
+<!-- MODAL AGREGAR CONTACTO -->
+<div class="modal fade" id="modalAgregarContacto" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <i class="bi bi-person-plus"></i> Agregar Nuevo Contacto
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Nombre completo *</label>
+          <input type="text" id="nombreContacto" class="form-control" placeholder="Ej: Juan Pérez">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">CBU (12-22 dígitos) *</label>
+          <input type="text" id="cbuContacto" class="form-control" placeholder="Ej: 1234567890123456789012">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Alias</label>
+          <input type="text" id="aliasContacto" class="form-control" placeholder="Ej: juan.perez">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Banco</label>
+          <input type="text" id="bancoContacto" class="form-control" placeholder="Ej: Banco Nación">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <i class="bi bi-x"></i> Cancelar
+        </button>
+        <button type="button" id="guardarContacto" class="btn btn-success">
+          <i class="bi bi-check"></i> Agregar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ENVIAR DINERO -->
+<div class="modal fade" id="modalEnviarDinero" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <i class="bi bi-send"></i> Confirmar Envío
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p id="destinatarioInfo" class="mb-3"></p>
+        <div class="mb-3">
+          <label class="form-label">Monto a enviar *</label>
+          <input type="number" id="montoEnvio" class="form-control" placeholder="Ingresa el monto" min="1">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <i class="bi bi-x"></i> Cancelar
+        </button>
+        <button type="button" id="confirmarEnvio" class="btn btn-warning">
+          <i class="bi bi-check"></i> Confirmar Envío
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- jQuery UI para Autocomplete -->
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Script principal -->
+<script src="script.js"></script>
+
+</body>
+</html>

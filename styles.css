@@ -1,0 +1,543 @@
+/* =====================================================
+   ALKE WALLET - Estilos Globales
+   Módulo 2: Fundamentos del desarrollo Front-end
+===================================================== */
+
+/* Variables de colores */
+:root {
+  --primary-color: #6C63FF;
+  --primary-dark: #5A52D5;
+  --secondary-color: #00D9A5;
+  --accent-color: #FF6B6B;
+  --dark-color: #2D3748;
+  --light-color: #F7FAFC;
+  --gray-color: #718096;
+  --success-color: #48BB78;
+  --warning-color: #ECC94B;
+  --danger-color: #F56565;
+  --gradient-primary: linear-gradient(135deg, #6C63FF 0%, #00D9A5 100%);
+  --gradient-card: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* Reset y estilos base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-top: 70px;
+  color: var(--dark-color);
+}
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+.navbar {
+  background: var(--gradient-primary) !important;
+  box-shadow: var(--shadow-md);
+  padding: 0.8rem 1rem;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: white !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-brand i {
+  font-size: 1.8rem;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px;
+  transition: var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.nav-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white !important;
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* =====================================================
+   CONTENEDORES Y CARDS
+===================================================== */
+.main-container {
+  background: var(--gradient-card);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+  max-width: 450px;
+  margin: 2rem auto;
+  text-align: center;
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-balance {
+  background: var(--gradient-primary);
+  color: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.card-balance h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.card-balance p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+/* =====================================================
+   TÍTULOS
+===================================================== */
+h2 {
+  color: var(--dark-color);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+h2 i {
+  color: var(--primary-color);
+  margin-right: 0.5rem;
+}
+
+/* =====================================================
+   FORMULARIOS
+===================================================== */
+.form-control {
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: var(--transition-fast);
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--dark-color);
+  margin-bottom: 0.5rem;
+}
+
+.form-select {
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  transition: var(--transition-fast);
+}
+
+.form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+
+/* =====================================================
+   BOTONES
+===================================================== */
+.btn {
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: var(--transition-normal);
+  border: none;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-success {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.btn-success:hover {
+  background: #00c495;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-warning {
+  background: var(--warning-color);
+  color: var(--dark-color);
+}
+
+.btn-warning:hover {
+  background: #d4a83d;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-danger {
+  background: var(--accent-color);
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #e85555;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline-light {
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-outline-light:hover {
+  background: white;
+  color: var(--primary-color);
+}
+
+/* Botones del menú principal */
+.btn-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 14px;
+  transition: var(--transition-normal);
+}
+
+.btn-menu:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-menu i {
+  font-size: 1.4rem;
+}
+
+/* =====================================================
+   ALERTAS
+===================================================== */
+.alert {
+  border-radius: 12px;
+  padding: 1rem;
+  font-weight: 500;
+  border: none;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alert-success {
+  background-color: #c6f6d5;
+  color: #22543d;
+}
+
+.alert-danger {
+  background-color: #fed7d7;
+  color: #742a2a;
+}
+
+.alert-info {
+  background-color: #bee3f8;
+  color: #2a4365;
+}
+
+.alert-warning {
+  background-color: #fefcbf;
+  color: #744210;
+}
+
+/* =====================================================
+   LISTA DE CONTACTOS Y MOVIMIENTOS
+===================================================== */
+.list-group {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.list-group-item {
+  border: none;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 1rem;
+  transition: var(--transition-fast);
+  text-align: left;
+}
+
+.list-group-item:hover {
+  background-color: #f7fafc;
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}
+
+.list-group-item .form-check-input:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Badges para movimientos */
+.badge-deposito {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.badge-envio {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.badge-recepcion {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* =====================================================
+   MODALES
+===================================================== */
+.modal-content {
+  border-radius: 20px;
+  border: none;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-header {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 1.25rem 1.5rem;
+}
+
+.modal-title {
+  font-weight: 700;
+  color: var(--dark-color);
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  border-top: 1px solid #e2e8f0;
+  padding: 1rem 1.5rem;
+}
+
+/* =====================================================
+   LOGIN ESPECIAL
+===================================================== */
+.login-container {
+  max-width: 400px;
+}
+
+.login-logo {
+  width: 80px;
+  height: 80px;
+  background: var(--gradient-primary);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.login-logo i {
+  font-size: 2.5rem;
+  color: white;
+}
+
+/* =====================================================
+   SALDO ACTUAL
+===================================================== */
+.saldo-display {
+  background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.saldo-display p {
+  margin: 0;
+  color: var(--gray-color);
+  font-size: 0.9rem;
+}
+
+.saldo-display h4 {
+  margin: 0;
+  color: var(--dark-color);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+/* =====================================================
+   EFECTOS ESPECIALES
+===================================================== */
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(108, 99, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(108, 99, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(108, 99, 255, 0);
+  }
+}
+
+.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 576px) {
+  body {
+    padding-top: 60px;
+  }
+
+  .main-container {
+    margin: 1rem;
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .card-balance h3 {
+    font-size: 2rem;
+  }
+
+  .btn-menu {
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    max-width: 100%;
+    margin: 1rem;
+  }
+}
+
+/* =====================================================
+   UTILIDADES
+===================================================== */
+.text-primary-custom {
+  color: var(--primary-color) !important;
+}
+
+.bg-primary-custom {
+  background-color: var(--primary-color) !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Autocomplete styles */
+.ui-autocomplete {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1050;
+}
+
+.ui-menu-item {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.ui-menu-item:hover,
+.ui-state-active {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
